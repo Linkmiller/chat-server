@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="style.css" <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+</head>
+
+<body>
+   
+    <h1>Chat</h1>
+    <div id="form-input">
+        <form id="chat-form" action="chat"
+        method="POST">
+        <input type="text" name="body">
+        <input type="submit">
+        </form>
+    </div>
+     <h2>GOOD GREAT GRAND! Its Working!</h2>
+    
+        <img src="https://i.ytimg.com/vi/6dncx6O5J4U/hqdefault.jpg" alt="bus" width="100%" height="100%">
+    </div>
+    <script>
+       let chatForm = document.getElementById('chatForm');
+       let chatLog = document.getElementById('chat-log');
+
+       chatForm.addEventListener('submit', (event) => {
+           let inputElement = chatForm.querySelector('input [name=body]')
+           let message = inputElement.value;
+           let params = new URLSearchParams();
+           params.append('body', message);
+
+           fetch('/chat', {
+               method: 'POST',
+               body: params
+           })
+           .then((response) => response.json())
+           .then((messages) => {
+                chatLog.innerHTML = message.map(message => message.body).join('<br>')({
+                   
+                })
+           })
+
+           event.preventDefault();
+       })
+    </script>
+  
+</body>
+
+</html>
